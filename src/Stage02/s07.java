@@ -6,11 +6,13 @@ public class s07 {
 	public static void main(String[] args) {
 		Scanner scanner = new Scanner(System.in);
 		
-		int x = scanner.nextInt();
-		int y = scanner.nextInt();
+		int a = scanner.nextInt();
+		int b = scanner.nextInt();
 		
-		if(x+y>=10)
-			System.out.println("초과했습니다.");
-		System.out.println(x+y);
+		if((a>0&&a<10)&&(b>0&&b<10)) {
+			System.out.println(a+b);
+		}else {
+			System.out.println("a,b의 범위가 틀렸습니다.");
+		}
 	}
 }
