@@ -25,7 +25,7 @@ public class s02 {
 				mid = num[i];
 		}
 		
-		System.out.println(mid);
+		//System.out.println(mid);
 	}
 	
 }
