@@ -3,20 +3,30 @@ import java.util.*;
 
 public class s02 {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception{
 		Scanner scanner = new Scanner(System.in);
 		
 		int a = scanner.nextInt();
 		int b = scanner.nextInt();
 		int c = scanner.nextInt();
-		
+
 		int result=a*b*c;
 		
-		int [] arr = {1,1,1,1,1,1,1,1,1,1};
-		
+		int [] arr = new int[10];
+		//System.out.println(result);
+
 		String change = Integer.toString(result);
-		
+		/*
+		while(result != 0) {
+			arr[result%10]++;
+			result /=10;
+		}
+		*/
 		for(int i=0;i<change.length();i++) {
+			
+			int temp = Integer.parseInt(change.substring(i, i+1));
+			arr[temp]++;
+			/*
 			if(change.charAt(i)=='0') {
 				 arr[0]++;
 			}
@@ -47,10 +57,11 @@ public class s02 {
 			if(change.charAt(i)=='9') {
 				 arr[9]++;
 			}
-			
+			*/
 		}
+		
 		for(int i=0;i<arr.length;i++) {
-			System.out.println((arr[i]-1));
+			System.out.println((arr[i]));
 		}
 		
 	}
