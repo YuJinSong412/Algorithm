@@ -17,7 +17,7 @@ public class s04 {
 		switch (input[0]) {
 		case 1:
 			for (int i = 0; i < 8; i++) {
-				if (input[i] != (i+1)) {
+				if (input[i]!=(i+1)) {
 					flage = false;
 				}
 			}
