@@ -9,8 +9,9 @@ public class s08 {
 
 		int N = scanner.nextInt();
 
-		int y = N/5;
+	    int y = N/5;
 		int x = (N-5*y);
+	   
 		
 		if(N==7 || N==4) {
 			System.out.println(-1);
@@ -18,9 +19,10 @@ public class s08 {
 		else if(x % 3 ==0) {
 			System.out.println(x/3+y);
 		}
-		else if(x % 3 != 0) {
-			y = N/5 -1;
-			x = (N-5*y);
+		else{
+			y -=1;
+			x +=5;
+		
 			if(x%3==0) {
 				System.out.println(x/3+y);
 			}else if(x%3!=0) {
@@ -31,8 +33,7 @@ public class s08 {
 				}
 			}
 		}
-		
-		
+			
 	}
 
 }
