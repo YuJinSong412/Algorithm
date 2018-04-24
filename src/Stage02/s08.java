@@ -9,15 +9,30 @@ public class s08 {
 
 		int N = scanner.nextInt();
 
-		if(N==4 || N==7)
-			System.out.println("-1");
-		else if ((N % 5) % 3 == 0 )
-			System.out.println((N / 5)+(N % 5)/3);
-		else if ((N % 3) == 0) 
-			System.out.println(N/3);
-		else if((N%5)%3 != 0) {
-			System.out.println(((N/5)-1)+(N-((N/5)-1)*5)/3);
+		int y = N/5;
+		int x = (N-5*y);
+		
+		if(N==7 || N==4) {
+			System.out.println(-1);
 		}
+		else if(x % 3 ==0) {
+			System.out.println(x/3+y);
+		}
+		else if(x % 3 != 0) {
+			y = N/5 -1;
+			x = (N-5*y);
+			if(x%3==0) {
+				System.out.println(x/3+y);
+			}else if(x%3!=0) {
+				y = y-1;
+				x = (N-5*y);
+				if(x%3==0) {
+					System.out.println(x/3+y);
+				}
+			}
+		}
+		
+		
 	}
 
 }
