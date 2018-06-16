@@ -1,7 +1,7 @@
-package Stage01;
+package Baekjoon;
 import java.util.*;
 
-public class s03 {
+public class _1001 {
 
 	public static void main(String[] args) {
 		Scanner scanner = new Scanner(System.in);
