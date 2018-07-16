@@ -16,6 +16,7 @@ public class _15894 {
 		int sum = first + num + side + last;
 		System.out.println(sum);
 		*/
+		
 		System.out.println(num*4);
 	}
 }
