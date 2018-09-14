@@ -3,9 +3,14 @@ import java.util.*;
 public class ex {
 
 	public static void main(String[] args) {
-		System.out.println("안녕하세요");
+		Scanner scanner = new Scanner(System.in);
 		
-
+		int arr[] = new int[5];
+		for(int i=0;i<arr.length;i++) {
+			arr[i] = scanner.nextInt();
+			System.out.print(arr[i]+" ");
+		}
+		
 	}
 
 }
