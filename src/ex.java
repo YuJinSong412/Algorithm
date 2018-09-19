@@ -8,7 +8,7 @@ public class ex {
 		int arr[] = new int[5];
 		for(int i=0;i<arr.length;i++) {
 			arr[i] = scanner.nextInt();
-			System.out.print(arr[i]+" ");
+			
 		}
 		
 	}
