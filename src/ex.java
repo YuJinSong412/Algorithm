@@ -3,14 +3,12 @@ import java.util.*;
 public class ex {
 
 	public static void main(String[] args) {
-		Scanner scanner = new Scanner(System.in);
+		int num1 = 12;
+		int num2 = 20;
+		int result = num1 + num2;
 		
-		int arr[] = new int[5];
-		for(int i=0;i<arr.length;i++) {
-			arr[i] = scanner.nextInt();
-			
-		}
-		
+		System.out.println(num1+" + "+num2+" = "+result);   //문자열을 더함
+		System.out.printf("%d + %d = %d", num1,num2,result);  //형식지정해서 나타냄
 	}
 
 }
