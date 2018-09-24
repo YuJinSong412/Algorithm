@@ -3,19 +3,35 @@ import java.util.*;
 public class ex {
 
 	public static void main(String[] args) {
-		int pwd = 123456;
-		int encPwd, decPwd;
-		int key  = 0x1A253B65;
+		Scanner scanner = new Scanner(System.in);
 		
-		System.out.println("암호화 전 비밀번호 : "+pwd);
+		System.out.println("## 로그인 (admin 혹은 임의 아이디) ##");
+	    System.out.print("로그인 아이디 : ");
+	    String name = scanner.next();
+	    
+	    if(name.equals("admin")) {
+	    	System.out.println("관리자 로그인!!");
+	    }
+	    else {
+	    	System.out.println(name + " 로그인!!");
+	    }
+	    
+	    System.out.println("## 메뉴를 선택 하세요(1~2) ##");
+		System.out.print("# 메뉴 선택 : ");
+		String num = scanner.next();
 		
-		encPwd = pwd ^ key;  //암호화 값
-		
-		System.out.println("암호화 후 비밀번호 : "+encPwd);
-		
-		decPwd = encPwd ^ key;  //암호화를 푼 것
-		
-		System.out.println("복호화 후 비밀번호 :"+decPwd);
+		if(num.equals("1") && name.equals("admin")) {
+			System.out.println("관리자 1번 선택함!!");
+		}
+		else if(num.equals("2") && name.equals("admin")) {
+			System.out.println("관리자 2번 선택함!!");
+		}
+		else if(num.equals("1") && !name.equals("admin")) {
+			System.out.println(name + " "+num+"번 선택함!!");
+		}
+		else if(num.equals("2") && !name.equals("admin")) {
+			System.out.println(name + " "+num+"번 선택함!!");
+		}
 	}
 
 }
