@@ -3,12 +3,19 @@ import java.util.*;
 public class ex {
 
 	public static void main(String[] args) {
-		int num1 = 12;
-		int num2 = 20;
-		int result = num1 + num2;
+		int pwd = 123456;
+		int encPwd, decPwd;
+		int key  = 0x1A253B65;
 		
-		System.out.println(num1+" + "+num2+" = "+result);   //문자열을 더함
-		System.out.printf("%d + %d = %d", num1,num2,result);  //형식지정해서 나타냄
+		System.out.println("암호화 전 비밀번호 : "+pwd);
+		
+		encPwd = pwd ^ key;  //암호화 값
+		
+		System.out.println("암호화 후 비밀번호 : "+encPwd);
+		
+		decPwd = encPwd ^ key;  //암호화를 푼 것
+		
+		System.out.println("복호화 후 비밀번호 :"+decPwd);
 	}
 
 }
