@@ -4,8 +4,11 @@ public class ex {
 
 	public static void main(String[] args) {
 		Scanner scanner = new Scanner(System.in);
-		double num = (double)40/(double)80;
-		System.out.println(num);
+		int N = scanner.nextInt();
+		
+		for(int i=1;i<=N;i++) {
+			System.out.println(i);
+		}
 
 	}
 
