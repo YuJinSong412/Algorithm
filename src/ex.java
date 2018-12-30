@@ -1,15 +1,15 @@
+import java.lang.reflect.Array;
 import java.util.*;
 
 public class ex {
 
 	public static void main(String[] args) {
-		Scanner scanner = new Scanner(System.in);
-		int N = scanner.nextInt();
+		int[] mainnn = {20,30,109,50};
 		
-		for(int i=1;i<=N;i++) {
-			System.out.println(i);
+		Arrays.sort(mainnn);
+		
+		for(int i=0;i<mainnn.length;i++) {
+			System.out.println(mainnn[i]);
 		}
-
 	}
-
 }
