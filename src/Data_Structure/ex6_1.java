@@ -1,4 +1,4 @@
-package Data_Structure;
+/*package Data_Structure;
 
 public class ex6_1 {
 
@@ -138,3 +138,4 @@ class ListNode{
 		return this.data;
 	}
 }
+*/
