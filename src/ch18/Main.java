@@ -32,15 +32,19 @@ public class Main {
 						"dkdl" } };
 		ArrayList<Person> listPerson = new ArrayList<Person>();
 		
-		AddPerson addPerson = new AddPerson();
-		listPerson = addPerson.merge(content);
+		mergePerson mergePerson = new mergePerson();
+		listPerson = mergePerson.merge(content);
+		
 
+//		ColumnSize columnSize = new ColumnSize();
+//		columnSize.printTitle(title, listPerson);
+//		
 		PrintTable printTable = new PrintTable();
 		printTable.setTitle(title);
 		printTable.setList(listPerson);
 	
 		printTable.header();
-		printTable.content(listPerson);
+		printTable.content();
 
 
 	}

@@ -2,12 +2,11 @@ package ch18;
 
 import java.util.ArrayList;
 
-public class AddPerson {
+public class mergePerson {
 	
 	private ArrayList<Person> personList = new ArrayList<Person>();
-	
-	
-	
+
+
 	public ArrayList<Person> getPersonList() {
 		return personList;
 	}
@@ -30,5 +29,7 @@ public class AddPerson {
 		return personList;
 		
 	}
+	
+	
 
 }
