@@ -17,25 +17,28 @@ public class ColumnPrint {
 
 	private int index = 0;
 
-	public int getIndex() {
-		return index;
-	}
-
-	public void setIndex(int index) {
-		this.index = index;
-	}
-
 	private ArrayList<ColumnSize> countSpace;
-
+	
 	private ArrayList<Person> listPerson;
+	
+
 
 	public ColumnPrint() {
+		
 	};
 
 	public ColumnPrint(ArrayList<ColumnSize> countSpace) {
 		this.countSpace = countSpace;
 	}
 
+	public int getIndex() {
+		return index;
+	}
+	
+	public void setIndex(int index) {
+		this.index = index;
+	}
+	
 	public ArrayList<ColumnSize> getCountSpace() {
 		return countSpace;
 	}
@@ -52,8 +55,8 @@ public class ColumnPrint {
 		this.listPerson = listPerson;
 	}
 
-	// 공간확보와 그것을 출력하는 것.
 
+	
 	public ArrayList<ColumnSize> initCountSpace(String[] title) {
 
 		countSpace = new ArrayList<ColumnSize>();
@@ -68,12 +71,12 @@ public class ColumnPrint {
 
 	}
 
-	public ArrayList<ColumnSize> countSpace2(String[] title, ArrayList<Person> listPerson) {
+	public ArrayList<ColumnSize> countSpace(String[] title, ArrayList<Person> listPerson) {
 		initCountSpace(title);
 
 		for (index = 0; index < listPerson.size(); index++) {
 
-			String[] compare = temp(listPerson);
+			String[] compare = tempArray(listPerson);
 			for (int j = 0; j < compare.length; j++) {
 				if (countSpace.get(j).getSize() < compare[j].length()) {
 					countSpace.get(j).setSize(compare[j].length());
@@ -81,6 +84,17 @@ public class ColumnPrint {
 			}
 
 		}
+		
+		for (int k = 0; k < countSpace.size(); k++) {
+			System.out.print("+");
+			for (int l = 0; l < countSpace.get(k).getSize(); l++) {
+
+				System.out.print("-");
+
+			}
+		}
+		System.out.print("+");
+		System.out.println();
 
 		return countSpace;
 	}
@@ -90,15 +104,9 @@ public class ColumnPrint {
 		for (int i = 0; i < compare.length; i++) {
 			System.out.print("|");
 			if (countSpace.get(i).getSize() > compare[i].length()) {
-				String s = "";
-				int space = countSpace.get(i).getSize() - compare[i].length();
- 
-				for (int j = 0; j < space; j++) {
-					s += " ";
-				}
-
-				//System.out.printf("%-30s", compare[i]);
-				System.out.print(compare[i] + s);
+				
+				System.out.printf("%-"+countSpace.get(i).getSize()+"s", compare[i]);
+				
 			} else {
 				System.out.print(compare[i]);
 			}
@@ -107,22 +115,22 @@ public class ColumnPrint {
 		System.out.println();
 	}
 
-	public String[] temp(ArrayList<Person> listPerson) {
+	public String[] tempArray(ArrayList<Person> listPerson) {
 
-		String[] compare = new String[listPerson.size()];
+		String[] temp = new String[listPerson.size()];
 
-		compare[LAST_NAME] = listPerson.get(index).getLast_name();
-		compare[FIRST_NAME] = listPerson.get(index).getFirst_name();
-		compare[EMAIL] = listPerson.get(index).getEmail();
-		compare[PHONE] = listPerson.get(index).getPhone();
-		compare[ADDRESS] = listPerson.get(index).getAddress();
-		compare[SECURITY] = listPerson.get(index).getSecurity();
-		compare[HAMBURDERING] = listPerson.get(index).getHamburgerIng();
-		compare[WKWKWKDSOAUS] = listPerson.get(index).getWkwkwkdsoaus();
-		compare[YUJINSONGI] = listPerson.get(index).getYujinsongi();
-		compare[DKSSUDGKTPDY] = listPerson.get(index).getDkssudgktpdy();
+		temp[LAST_NAME] = listPerson.get(index).getLast_name();
+		temp[FIRST_NAME] = listPerson.get(index).getFirst_name();
+		temp[EMAIL] = listPerson.get(index).getEmail();
+		temp[PHONE] = listPerson.get(index).getPhone();
+		temp[ADDRESS] = listPerson.get(index).getAddress();
+		temp[SECURITY] = listPerson.get(index).getSecurity();
+		temp[HAMBURDERING] = listPerson.get(index).getHamburgerIng();
+		temp[WKWKWKDSOAUS] = listPerson.get(index).getWkwkwkdsoaus();
+		temp[YUJINSONGI] = listPerson.get(index).getYujinsongi();
+		temp[DKSSUDGKTPDY] = listPerson.get(index).getDkssudgktpdy();
 
-		return compare;
+		return temp;
 
 	}
 

@@ -34,23 +34,11 @@ public class PrintTable {
 		this.countSpace = countSpace;
 	}
 
-	/* 라인 그리는 메소드 */
 	public void makeLine() {
 
-		ColumnPrint c = new ColumnPrint();
+		ColumnPrint columnPrint = new ColumnPrint();
 
-		countSpace = c.countSpace2(title, listPerson);
-
-		for (int k = 0; k < countSpace.size(); k++) {
-			System.out.print("+");
-			for (int l = 0; l < countSpace.get(k).getSize(); l++) {
-
-				System.out.print("-");
-
-			}
-		}
-		System.out.print("+");
-		System.out.println();
+		countSpace = columnPrint.countSpace(title, listPerson);
 
 	}
 
@@ -58,8 +46,8 @@ public class PrintTable {
 
 		makeLine();
 
-		ColumnPrint c = new ColumnPrint(countSpace);
-		c.printColumn(title);
+		ColumnPrint columnPrint = new ColumnPrint(countSpace);
+		columnPrint.printColumn(title);
 
 		makeLine();
 
@@ -68,11 +56,11 @@ public class PrintTable {
 	public void content() {
 
 		for (int index = 0; index < listPerson.size(); index++) {
-			ColumnPrint c = new ColumnPrint(countSpace);
-			c.setIndex(index);
-			String[] compare = c.temp(listPerson);
+			ColumnPrint columnPrint = new ColumnPrint(countSpace);
+			columnPrint.setIndex(index);
+			String[] temp = columnPrint.tempArray(listPerson);
 
-			c.printColumn(compare);
+			columnPrint.printColumn(temp);
 		}
 
 		makeLine();

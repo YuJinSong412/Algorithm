@@ -30,15 +30,12 @@ public class Main {
 						"dhkdndhdkn", "dkdldldl" },
 				{ "yuds", "ssdong", "songij4@gmail.com", "0101921", "970412sdds12", "qjzld", "fffkd", "wkldyd", "dhkn",
 						"dkdl" } };
-		ArrayList<Person> listPerson = new ArrayList<Person>();
 		
+		ArrayList<Person> listPerson = new ArrayList<Person>();
 		mergePerson mergePerson = new mergePerson();
 		listPerson = mergePerson.merge(content);
 		
 
-//		ColumnSize columnSize = new ColumnSize();
-//		columnSize.printTitle(title, listPerson);
-//		
 		PrintTable printTable = new PrintTable();
 		printTable.setTitle(title);
 		printTable.setList(listPerson);
