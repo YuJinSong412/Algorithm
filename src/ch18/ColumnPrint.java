@@ -99,16 +99,16 @@ public class ColumnPrint {
 		return countSpace;
 	}
 
-	public void printColumn(String[] compare) {
+	public void printColumn(String[] temp) {
 
-		for (int i = 0; i < compare.length; i++) {
+		for (int i = 0; i < temp.length; i++) {
 			System.out.print("|");
-			if (countSpace.get(i).getSize() > compare[i].length()) {
+			if (countSpace.get(i).getSize() > temp[i].length()) {
 				
-				System.out.printf("%-"+countSpace.get(i).getSize()+"s", compare[i]);
+				System.out.printf("%-"+countSpace.get(i).getSize()+"s", temp[i]);
 				
 			} else {
-				System.out.print(compare[i]);
+				System.out.print(temp[i]);
 			}
 		}
 		System.out.print("|");
