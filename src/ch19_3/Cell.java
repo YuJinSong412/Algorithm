@@ -71,5 +71,26 @@ public class Cell {
 	public void setMAX_LENGTH(int mAX_LENGTH) {
 		MAX_LENGTH = mAX_LENGTH;
 	}
+	
+	
+	public String spacedData(String data) {
+
+	    String countSpace = "";
+
+	    int space = 0;
+
+	    if (data.length() < MAX_LENGTH) {
+	      space = MAX_LENGTH - data.length();
+	    }
+
+	    for (int i = 0; i < space; i++) {
+	      countSpace += " ";
+	    }
+
+	    return data + countSpace;
+
+
+	  }
+
 
 }

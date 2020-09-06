@@ -2,28 +2,29 @@ package ch19_3;
 
 public class Person {
 
-	private TableHeader name;
+	private String name;
 	
-	private TableHeader age;
+	private String age;
 	
-	public Person(TableHeader name, TableHeader age) {
+	public Person(String name, String age) {
 		this.name = name;
 		this.age = age;
 	}
 
-	public TableHeader getName() {
+	
+	public String getName() {
 		return name;
 	}
 
-	public void setName(TableHeader name) {
+	public void setName(String name) {
 		this.name = name;
 	}
 
-	public TableHeader getAge() {
+	public String getAge() {
 		return age;
 	}
 
-	public void setAge(TableHeader age) {
+	public void setAge(String age) {
 		this.age = age;
 	}
 	

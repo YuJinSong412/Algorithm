@@ -21,38 +21,51 @@ public class Table {
 
 	public void setData(String[] title, String[][] content) {
 
+		TableRow tableRow = new TableRow();
 		for (int i = 0; i < title.length; i++) {
-			TableHeader tableHeader = new TableHeader(title[i]);
-			TableRow tableRow = new TableRow();
+			TableData tableHeader = new TableData(title[i]);
 			tableRow.addTableHeader(tableHeader);
-			getTableRows().add(tableRow);
 		}
-
-		for (int i = 0; i < content.length; i++) {
-			TableRow tableRow = new TableRow();
-			for (int j = 0; j < content[i].length; j++) {
+		getTableRows().add(tableRow);
+		
+		
+		for(int i=0;i<content.length;i++) {
+			TableRow tableRow1 = new TableRow();
+			for(int j=0;j<content[i].length;j++) {
 				TableData tableData = new TableData(content[i][j]);
-				tableRow.addTableData(tableData);
+				tableRow1.addTableData(tableData);
 			}
-			getTableRows().add(tableRow);
-
+			getTableRows().add(tableRow1);
 		}
-
+		
 		System.out.println(tableRows.size());
-
+		//System.out.println(tableRows.get(0).getTableHeader().get(1).getData());
 	}
 
 	public void printTable() {
 		
 		int rowIndex = 0;
-		
-//		for(TableRow tr : tableRows) {
-//			tr.printTableRow(rowIndex++);
-//		}
-		for(int i=0;i<tableRows.size();i++) {
-			System.out.println(tableRows.get(i).getTableData());
-		}
 
+		Print print = new Print();
+		print.printprint(tableRows,2);
+		print.printprint(tableRows,2);
+		
+	}
+
+	private void printTableRow(int rowIndex) {
+		
+		Cell cell = new TableHeader();
+		String headerPrint = rowIndex == 0 ? cell.getBorderTop() + "\n" : "";
+		
+		String newData = "";
+		newData = cell.spacedData(tableRows.get(rowIndex).getTableData().get(rowIndex).getData());
+		String result = headerPrint + cell.getBorderLeft() + newData + cell.getBorderRight() + "\n" + headerPrint;
+
+		//System.out.println(headerPrint);
+		//System.out.println(tableRow.getTableHeader());
+		
+		System.out.println(result);
+		
 	}
 
 }
