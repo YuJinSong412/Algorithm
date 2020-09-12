@@ -3,8 +3,6 @@ package ch20_1;
 import java.awt.Color;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
@@ -22,13 +20,12 @@ public class FirstRowButtonPanel extends JPanel {
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		setLayout(gridBagLayout);
 
+		/* 계산기버튼-글씨 크기, 배경색 지정, 버튼 크기 지 */
 		for (int i = 0; i < BUTTON_SIZE; i++) {
 			calculatorButton[i] = new JButton(buttonComponent[i]);
 			calculatorButton[i].setFont(calculatorButton[i].getFont().deriveFont(20f));
 			gridBagConstraints[i] = new GridBagConstraints();
-		}
 
-		for (int i = 0; i < BUTTON_SIZE; i++) {
 			if (i == 4) {
 				int j = i - 1;
 				gridBagConstraints[i].gridx = j;
@@ -51,51 +48,23 @@ public class FirstRowButtonPanel extends JPanel {
 			gridBagConstraints[i].fill = GridBagConstraints.BOTH;
 			calculatorButton[i].setBackground(Color.WHITE);
 			add(calculatorButton[i], gridBagConstraints[i]);
-
 		}
 
-		calculatorButton[0].addActionListener(new MyListener());
 		
-		calculatorButton[1].addActionListener(new ActionListener() {
+		/*각 버튼 기능 적용 */
+		for(int i = 0 ;i<calculatorButton.length;i++) {
+			if(i == 0 || i == 4) {
+				calculatorButton[i].addActionListener(new OperationListener());	//기호는 연속으로 입력 안되게 
+			} else if(i == 1) {
+				calculatorButton[i].addActionListener(new DegreeOfDeleteListener(false));	// 전체 삭제 노노
+			} else if(i == 2) {
+				calculatorButton[i].addActionListener(new DegreeOfDeleteListener(true));	//기록 전체도 삭제.
+			} else if(i == 3) {
+				calculatorButton[3].addActionListener(new LastTextRemoveListener());	//마지막 문자 삭제.
 
-			public void actionPerformed(ActionEvent e) {
-
-				PushButtonLabelPanel.jLabel.setText("0");
-				
-				RestButtonPanel.count = 0;
-				RestButtonPanel.toggleCount = 0;
 			}
-		});
-
-		calculatorButton[2].addActionListener(new ActionListener() {
-
-			public void actionPerformed(ActionEvent e) {
-
-				CalculatorProcessLabelPanel.jLabel.setText(" ");
-				PushButtonLabelPanel.jLabel.setText("0");
-				
-				RestButtonPanel.count = 0;
-				RestButtonPanel.toggleCount = 0;
-			}
-		});
-
-		calculatorButton[3].addActionListener(new ActionListener() {
-
-			public void actionPerformed(ActionEvent e) {
-
-				int removeLastText = CalculatorProcessLabelPanel.jLabel.getText().length() - 1;
-
-				if (removeLastText == 0) {
-					CalculatorProcessLabelPanel.jLabel.setText(" ");
-				} else {
-					CalculatorProcessLabelPanel.jLabel
-							.setText(CalculatorProcessLabelPanel.jLabel.getText().substring(0, removeLastText));
-
-				}
-			}
-		});
-
-		calculatorButton[4].addActionListener(new MyListener());
+		}
+		
 
 	}
 

@@ -23,6 +23,7 @@ public class CalculatorPanel extends JPanel {
 		LabelPanel labelPanel = new LabelPanel();
 		add(labelPanel, dividePanel[0]);
 
+		
 		/* 버튼 첫 행을 나타내는 패널 */
 		dividePanel[1] = new GridBagConstraints();
 		dividePanel[1].gridx = 0;
@@ -34,6 +35,7 @@ public class CalculatorPanel extends JPanel {
 		FirstRowButtonPanel firstRowButtonPanel = new FirstRowButtonPanel();
 		add(firstRowButtonPanel, dividePanel[1]);
 
+		
 		/* 나머지 버튼 나타내는 패널 */
 		dividePanel[2] = new GridBagConstraints();
 		dividePanel[2].gridx = 0;

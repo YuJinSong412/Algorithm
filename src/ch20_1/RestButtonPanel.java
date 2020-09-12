@@ -45,145 +45,28 @@ public class RestButtonPanel extends JPanel {
 
 			/* 버튼 1 ~ 9 눌렀을 때 */
 			if (i % 4 != 3 && i < 12) {
-				calculatorButton[i].addActionListener(new ActionListener() {
-
-					public void actionPerformed(ActionEvent e) {
-
-						JButton clickButton = (JButton) e.getSource();
-						String text = clickButton.getText();
-
-						/* 초기화로 되어있던 0을 없앰 */
-						if (count == 0) {
-							PushButtonLabelPanel.jLabel.setText(" ");
-							count++;
-						}
-
-						String oldText = CalculatorProcessLabelPanel.jLabel.getText();
-						String newText = oldText + text;
-
-						CalculatorProcessLabelPanel.jLabel.setText(newText);
-
-						if (!text.equals("+") || !text.equals("-") || !text.equals("X") || !text.equals("÷")) {
-
-							int TextNum = oldText.length();
-							Character FrontLastText = oldText.charAt(TextNum - 1);
-
-							if (FrontLastText == '+' || FrontLastText == '-' || FrontLastText == 'X'
-									|| FrontLastText == '÷') {
-								PushButtonLabelPanel.jLabel.setText(" ");
-							}
-							if (FrontLastText == '=') {
-								PushButtonLabelPanel.jLabel.setText(" ");
-								CalculatorProcessLabelPanel.jLabel.setText(text);
-							}
-
-							String oldPushText = PushButtonLabelPanel.jLabel.getText();
-							String newPushText = oldPushText + text;
-
-							PushButtonLabelPanel.jLabel.setText(newPushText);
-
-						}
-					}
-				});
+				calculatorButton[i].addActionListener(new DefaultButtonListener());
 			}
 			/* (+/-) 버튼 눌렀을 때 */
 			else if (i == 12) {
-				calculatorButton[i].addActionListener(new ActionListener() {
-
-					public void actionPerformed(ActionEvent e) {
-
-						String text2 = CalculatorProcessLabelPanel.jLabel.getText();
-						int index = 0;
-
-						for (int i = text2.length() - 1; i >= 0; i--) {
-							Character c = text2.charAt(i);
-							if (c == '+' || c == '-' || c == 'X' || c == '÷' || text2.length() == 0) {
-								index = i;
-								break;
-							}
-						}
-						String temp = text2;
-
-						String newnew = temp.substring(0, index + 1) + "-" + temp.substring(index + 1);
-
-						String text = PushButtonLabelPanel.jLabel.getText();
-
-						if (toggleCount % 2 == 0) {
-							CalculatorProcessLabelPanel.jLabel.setText(newnew);
-							PushButtonLabelPanel.jLabel.setText("-" + text);
-						} else {
-							CalculatorProcessLabelPanel.jLabel.setText(newnew.replace("-", ""));
-
-							PushButtonLabelPanel.jLabel.setText(text.replace("-", ""));
-						}
-						toggleCount++;
-
-					}
-				});
+				calculatorButton[i].addActionListener(new OperToggleButtonListener());
 			}
-			/* 0 버튼 눌렀을 */
-			else if (i == 13) {
-				calculatorButton[i].addActionListener(new ActionListener() {
+			/* 0, '.' 버튼 눌렀을 때 */
+			else if (i == 13 || i == 14) {
+				calculatorButton[i].addActionListener(new DefaultButtonListener());
+			} 
+			/* '='버튼 눌렀을 때 */
+			else if (i == 15) {
+				calculatorButton[i].addActionListener(new ResultCalcListener());
+			} 
+			/*연산기호 버튼 눌렀을 때 */
+			else if (i % 4 == 3) {
+				calculatorButton[i].addActionListener(new OperationListener());
+			} 
 
-					public void actionPerformed(ActionEvent e) {
-
-						JButton clickButton = (JButton) e.getSource();
-						String text = clickButton.getText();
-
-						/* 초기화로 되어있던 0을 없앰 */
-						if (count == 0) {
-							PushButtonLabelPanel.jLabel.setText(" ");
-							count++;
-						}
-
-						String oldText = CalculatorProcessLabelPanel.jLabel.getText();
-						String newText = oldText + text;
-
-						CalculatorProcessLabelPanel.jLabel.setText(newText);
-
-						if (!text.equals("+") || !text.equals("-") || !text.equals("X") || !text.equals("÷")) {
-
-							int TextNum = oldText.length();
-							Character FrontLastText = oldText.charAt(TextNum - 1);
-
-							if (FrontLastText == '+' || FrontLastText == '-' || FrontLastText == 'X'
-									|| FrontLastText == '÷') {
-								PushButtonLabelPanel.jLabel.setText(" ");
-							}
-
-							String oldPushText = PushButtonLabelPanel.jLabel.getText();
-							String newPushText = oldPushText + text;
-
-							PushButtonLabelPanel.jLabel.setText(newPushText);
-
-						}
-
-					}
-				});
-			} else if (i == 15) {
-				calculatorButton[i].addActionListener(new CalcListener());
-			} else if (i % 4 == 3) {
-				calculatorButton[i].addActionListener(new MyListener());
-			} else if (i == 14) {
-				calculatorButton[i].addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent e) {
-						JButton clickButton = (JButton) e.getSource();
-						String text = clickButton.getText();
-						
-						String oldText = CalculatorProcessLabelPanel.jLabel.getText();
-						String newText = oldText + text;
-
-						CalculatorProcessLabelPanel.jLabel.setText(newText);
-						
-						String oldPushText = PushButtonLabelPanel.jLabel.getText();
-						String newPushText = oldPushText + text;
-						
-						PushButtonLabelPanel.jLabel.setText(newPushText);
-					}
-				});
-			}
 		}
 
 	}
 
 }
+

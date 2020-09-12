@@ -11,7 +11,6 @@ public class PushButtonLabelPanel extends JPanel {
 	public PushButtonLabelPanel() {
 
 		jLabel = new JLabel("0");
-
 		add(jLabel);
 
 		jLabel.setFont(jLabel.getFont().deriveFont(35f));

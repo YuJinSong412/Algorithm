@@ -19,7 +19,6 @@ public class HistoryPanel extends JPanel {
 		add(text);
 
 		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-
 		setBorder(new TitledBorder(new EtchedBorder(), "계산 기록"));
 
 		Color color = new Color(251, 255, 135);

@@ -15,6 +15,7 @@ public class LabelPanel extends JPanel {
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		setLayout(gridBagLayout);
 
+		
 		/* 계산 과정 보이는 패널 */
 		dividePanel[0] = new GridBagConstraints();
 		dividePanel[0].gridx = 0;
@@ -25,6 +26,7 @@ public class LabelPanel extends JPanel {
 		CalculatorProcessLabelPanel CalProcessPanel = new CalculatorProcessLabelPanel();
 		add(CalProcessPanel, dividePanel[0]);
 
+		
 		/* 숫자버튼 누르면 숫자만 보이는 패널 */
 		dividePanel[1] = new GridBagConstraints();
 		dividePanel[1].gridx = 0;
