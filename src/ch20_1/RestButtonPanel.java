@@ -72,6 +72,10 @@ public class RestButtonPanel extends JPanel {
 									|| FrontLastText == '÷') {
 								PushButtonLabelPanel.jLabel.setText(" ");
 							}
+							if (FrontLastText == '=') {
+								PushButtonLabelPanel.jLabel.setText(" ");
+								CalculatorProcessLabelPanel.jLabel.setText(text);
+							}
 
 							String oldPushText = PushButtonLabelPanel.jLabel.getText();
 							String newPushText = oldPushText + text;
@@ -99,15 +103,9 @@ public class RestButtonPanel extends JPanel {
 							}
 						}
 						String temp = text2;
-						
-//						Character c2 = text2.charAt(index);
-//						String c2Text = c2.toString();
-//						String newnewnew = text2.substring(0,index) +c2Text + text2.substring(index + 1);;
 
-						String newnew = temp.substring(0, index+1) + "-"
-								+ temp.substring(index + 1);
-						
-						
+						String newnew = temp.substring(0, index + 1) + "-" + temp.substring(index + 1);
+
 						String text = PushButtonLabelPanel.jLabel.getText();
 
 						if (toggleCount % 2 == 0) {
@@ -115,7 +113,7 @@ public class RestButtonPanel extends JPanel {
 							PushButtonLabelPanel.jLabel.setText("-" + text);
 						} else {
 							CalculatorProcessLabelPanel.jLabel.setText(newnew.replace("-", ""));
-				
+
 							PushButtonLabelPanel.jLabel.setText(text.replace("-", ""));
 						}
 						toggleCount++;
@@ -166,6 +164,23 @@ public class RestButtonPanel extends JPanel {
 				calculatorButton[i].addActionListener(new CalcListener());
 			} else if (i % 4 == 3) {
 				calculatorButton[i].addActionListener(new MyListener());
+			} else if (i == 14) {
+				calculatorButton[i].addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						JButton clickButton = (JButton) e.getSource();
+						String text = clickButton.getText();
+						
+						String oldText = CalculatorProcessLabelPanel.jLabel.getText();
+						String newText = oldText + text;
+
+						CalculatorProcessLabelPanel.jLabel.setText(newText);
+						
+						String oldPushText = PushButtonLabelPanel.jLabel.getText();
+						String newPushText = oldPushText + text;
+						
+						PushButtonLabelPanel.jLabel.setText(newPushText);
+					}
+				});
 			}
 		}
 

@@ -54,6 +54,8 @@ public class FirstRowButtonPanel extends JPanel {
 
 		}
 
+		calculatorButton[0].addActionListener(new MyListener());
+		
 		calculatorButton[1].addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent e) {
@@ -93,24 +95,7 @@ public class FirstRowButtonPanel extends JPanel {
 			}
 		});
 
-		calculatorButton[4].addActionListener(new ActionListener() {
-
-			public void actionPerformed(ActionEvent e) {
-
-				JButton button = (JButton) e.getSource();
-				int TextNum = CalculatorProcessLabelPanel.jLabel.getText().length();
-
-				Character FrontLastText = CalculatorProcessLabelPanel.jLabel.getText().charAt(TextNum - 1);
-
-				if (FrontLastText != '+' && FrontLastText != '-' && FrontLastText != '×' && FrontLastText != '÷') {
-					String oldtext = CalculatorProcessLabelPanel.jLabel.getText();
-					String text = button.getText();
-					String newtext = oldtext + text;
-					CalculatorProcessLabelPanel.jLabel.setText(newtext);
-
-				}
-			}
-		});
+		calculatorButton[4].addActionListener(new MyListener());
 
 	}
 

@@ -13,7 +13,7 @@ public class MyListener implements ActionListener {
 
 		Character FrontLastText = CalculatorProcessLabelPanel.jLabel.getText().charAt(TextNum - 1);
 
-		if (FrontLastText != '+' && FrontLastText != '-' && FrontLastText != 'X' && FrontLastText != '÷') {
+		if (FrontLastText != '+' && FrontLastText != '-' && FrontLastText != 'X' && FrontLastText != '÷' && FrontLastText != '%') {
 			String oldtext = CalculatorProcessLabelPanel.jLabel.getText();
 			String text = button.getText();
 			String newtext = oldtext + text;

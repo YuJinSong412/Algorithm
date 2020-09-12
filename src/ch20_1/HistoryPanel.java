@@ -9,9 +9,12 @@ import javax.swing.border.TitledBorder;
 
 public class HistoryPanel extends JPanel {
 
+	static JTextArea text;
+
+	static String historyText="";
+	
 	public HistoryPanel() {
-		JTextArea text = new JTextArea(10, 20);
-		text.setText("7+3 = 10");
+		text = new JTextArea(10, 20);
 		text.setEditable(false);
 		add(text);
 
@@ -21,6 +24,12 @@ public class HistoryPanel extends JPanel {
 
 		Color color = new Color(251, 255, 135);
 		setBackground(color);
+	}
+	
+	public static void printHistoryText(String resultCal) {
+		historyText += resultCal+"\n";
+		text.setText(historyText);
+		
 	}
 
 }
