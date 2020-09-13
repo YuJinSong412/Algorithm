@@ -10,6 +10,7 @@ public class ResultCalcListener implements ActionListener {
 	int index;
 	double answerResult;
 
+
 	ArrayList<Double> number;
 	ArrayList<String> operation;
 
@@ -39,51 +40,12 @@ public class ResultCalcListener implements ActionListener {
 
 		addArrayList(text);
 
-//		for (index = 1; index < number.size(); index++) {
-//			String oneOperation = operation.get(index);
-//			double tmp = 0;
-//
-//			if (oneOperation.equals("X")) {
-//				tmp = number.get(index - 1) * number.get(index);
-//				operation.remove(index);
-//				number.remove(index);
-//				number.remove(index - 1);
-//				number.add(index - 1, tmp);
-//				index--;
-//			} else if (oneOperation.equals("÷")) {
-//				tmp = number.get(index - 1) / number.get(index);
-//				operation.remove(index);
-//				number.remove(index);
-//				number.remove(index - 1);
-//				number.add(index - 1, tmp);
-//				index--;
-//			} else if (oneOperation.equals("%")) {
-//				tmp = number.get(index - 1) % number.get(index);
-//				operation.remove(index);
-//				number.remove(index);
-//				number.remove(index - 1);
-//				number.add(index - 1, tmp);
-//				index--;
-//			}
-//
-//			// calculator(oneOperation);
-//
-//		}
-		
-		calculator();
+		priorityCalculator();
 
-		answerResult = number.get(0);
-		for (index = 1; index < number.size(); index++) {
-			String oneOperation = operation.get(index);
-			double oneNumber = number.get(index);
+		double finalCalculator = laterCalculator();
 
-			if (oneOperation.equals("+"))
-				answerResult = answerResult + oneNumber;
-			else if (oneOperation.equals("-"))
-				answerResult = answerResult - oneNumber;
-		}
+		return finalCalculator;
 
-		return answerResult;
 	}
 
 	private void addArrayList(String text) {
@@ -106,6 +68,7 @@ public class ResultCalcListener implements ActionListener {
 			} else if (oneCharacterToString.equals(".")) {
 				str += oneCharacterToString;
 			} else {
+
 				number.add(Double.parseDouble(str));
 				operation.add(Character.toString(oneCharacter));
 				str = "";
@@ -113,44 +76,47 @@ public class ResultCalcListener implements ActionListener {
 		}
 	}
 
-	private void calculator() {
+	private void priorityCalculator() {
 		for (index = 1; index < number.size(); index++) {
 			String oneOperation = operation.get(index);
 			double tmp = 0;
 
 			if (oneOperation.equals("X")) {
 				tmp = number.get(index - 1) * number.get(index);
-				operation.remove(index);
-				number.remove(index);
-				number.remove(index - 1);
-				number.add(index - 1, tmp);
-				index--;
+
 			} else if (oneOperation.equals("÷")) {
 				tmp = number.get(index - 1) / number.get(index);
-				operation.remove(index);
-				number.remove(index);
-				number.remove(index - 1);
-				number.add(index - 1, tmp);
-				index--;
+
 			} else if (oneOperation.equals("%")) {
 				tmp = number.get(index - 1) % number.get(index);
-				operation.remove(index);
-				number.remove(index);
-				number.remove(index - 1);
-				number.add(index - 1, tmp);
-				index--;
+
+			} else {
+				return;
 			}
 
-//			operation.remove(index);
-//			number.remove(index);
-//			number.remove(index - 1);
-//			number.add(index - 1, tmp);
-//			index--;
-			
-			// calculator(oneOperation);
+			operation.remove(index);
+			number.remove(index);
+			number.remove(index - 1);
+			number.add(index - 1, tmp);
+			index--;
 
 		}
 
+	}
+
+	private double laterCalculator() {
+		answerResult = number.get(0);
+		for (index = 1; index < number.size(); index++) {
+			String oneOperation = operation.get(index);
+			double oneNumber = number.get(index);
+
+			if (oneOperation.equals("+"))
+				answerResult = answerResult + oneNumber;
+			else if (oneOperation.equals("-"))
+				answerResult = answerResult - oneNumber;
+		}
+
+		return answerResult;
 	}
 
 }
