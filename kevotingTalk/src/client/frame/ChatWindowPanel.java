@@ -26,9 +26,13 @@ import javax.swing.ScrollPaneConstants;
 import javax.swing.SwingConstants;
 import javax.swing.border.Border;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import javax.swing.text.BadLocationException;
+import javax.swing.text.DefaultStyledDocument;
 import javax.swing.text.SimpleAttributeSet;
+import javax.swing.text.Style;
 import javax.swing.text.StyleConstants;
-
+import javax.swing.text.StyleContext;
+import javax.swing.text.StyledDocument;
 import client.ClientSocket;
 import server.ServerLaunch;
 import server.userDB.UserDAO;
@@ -43,6 +47,16 @@ public class ChatWindowPanel extends JPanel{
   JButton sendButton;
   
   static JTextArea textArea2;
+  
+  static JTextPane jtp;
+  
+  static Style style;
+
+  static Style style2;
+
+  static StyleContext context;
+
+  static StyledDocument document;
   
   Image img = UseImageFile.getImage("C:\\Users\\kev\\eclipse-workspace\\kevotingTalk\\src\\img\\picture.png");
   Image img2 = UseImageFile.getImage("C:\\Users\\kev\\eclipse-workspace\\kevotingTalk\\src\\img\\folder.png");
@@ -102,14 +116,20 @@ public class ChatWindowPanel extends JPanel{
     });
     
     
-    
-    textArea2 = new JTextArea(20,20);
-    textArea2.setBackground(color);
-    JScrollPane scroller2 = new JScrollPane(textArea2);
+    context = new StyleContext();
+    document = new DefaultStyledDocument(context);
+    jtp = new JTextPane(document);
+    jtp.setBackground(color);
+    JScrollPane scroller2 = new JScrollPane(jtp);
     scroller2.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
     scroller2.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
     scroller2.setBounds(0, 80, 389,380);
     add(scroller2);
+    
+    leftPrint("왜왜왜");
+    print("야야야");
+    leftPrint("제발");
+    print("되어라");
         
     sendButton = new JButton("전송");
     sendButton.setBackground(sendColor);
@@ -139,6 +159,7 @@ public class ChatWindowPanel extends JPanel{
     textArea2.append(text+"\n");
   }
   
+  
   public static void displayText2(String text) {
     if("송유진".equals(UserDAO.username)) {
       textArea2.setFont(new Font("맑은 고딕", Font.BOLD, 18));
@@ -164,4 +185,27 @@ public class ChatWindowPanel extends JPanel{
   }
   
 
+  private static void leftPrint(String string) {
+    
+    try {
+      SimpleAttributeSet right = new SimpleAttributeSet(); 
+      StyleConstants.setAlignment(right, StyleConstants.ALIGN_RIGHT); 
+      document.setParagraphAttributes(document.getLength(), document.getLength()+1, right, true);
+      document.insertString(document.getLength(), string + "\n", right);
+    } catch (BadLocationException e) {
+      e.printStackTrace();
+    }
+  }
+  
+  private static void print(String string) {
+    
+    try {
+      SimpleAttributeSet left = new SimpleAttributeSet(); 
+      StyleConstants.setAlignment(left, StyleConstants.ALIGN_LEFT); 
+      document.setParagraphAttributes(document.getLength(), document.getLength()+1, left, true);
+      document.insertString(document.getLength(), string + " \n", left);
+    } catch (BadLocationException e) {
+      e.printStackTrace();
+    }
+  }
 }
