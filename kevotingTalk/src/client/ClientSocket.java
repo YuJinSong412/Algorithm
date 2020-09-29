@@ -5,7 +5,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.InetSocketAddress;
 import java.net.Socket;
-
+import java.util.HashMap;
 import client.frame.ChatWindowPanel;
 import server.ServerLaunch;
 import server.userDB.UserDAO;
@@ -55,19 +55,16 @@ public class ClientSocket {
         
         System.out.println("정답!! : "+data);
         
-        //if(ServerLaunch.connections.get(0).username.equals(UserDAO.username)) {
-        //  ChatWindowPanel.displayText(data);
-      //  }else {
-          ChatWindowPanel.displayText2(data);
-          
-          
-        //}
+        
+        ChatWindowPanel.displayText(data);
+  
+ 
       }catch(Exception e) {}
     }
   }
   
   //사용자가 메시지 입력 후 전송 버튼 클릭하면 메시지를 매개값으로 호출, 서버로 메시지를 보내는 역할 
-  public void send(String data) {
+  public void send(String data) {    
     Thread thread = new Thread() {
       @Override
       public void run() {

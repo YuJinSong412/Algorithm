@@ -10,7 +10,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.geom.Line2D;
 import java.net.ServerSocket;
-
+import java.util.HashMap;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -143,37 +143,29 @@ public class ChatWindowPanel extends JPanel{
       @Override
       public void actionPerformed(ActionEvent e) {
   
-        //displayText(textArea.getText());
-        
         ClientSocket clientSocket = new ClientSocket();
-        clientSocket.send(UserDAO.username + " " + textArea.getText());
         
+        clientSocket.send(UserDAO.username + "=>" + textArea.getText());
+        
+        textArea.setText("");
       }
       
     });
     
   }
+
   
-  public static void displayText(String text) {
-    textArea2.setFont(new Font("맑은 고딕", Font.BOLD, 18));
-    textArea2.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
-    textArea2.append(text+"\n");
+  public static void displayText(String data) {
+    
+  String[] info = data.split("=>");
+    
+  if(info[0].equals(UserDAO.username)) {
+   ChatWindowPanel.rightPrint(info[1]);
+  }else {
+    ChatWindowPanel.leftPrint(info[1]);
   }
-  
-  
-  public static void displayText2(String text) {
-    if("송유진".equals(UserDAO.username)) {
-      rightPrint(text);
-//      textArea2.setFont(new Font("맑은 고딕", Font.BOLD, 18));
-//      textArea2.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
-//      textArea2.append(text+"\n");
-    }else {
-      leftPrint(text);
-//      textArea2.setFont(new Font("맑은 고딕", Font.BOLD, 18));
-//      //textArea2.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
-//      textArea2.append(text+"\n");
-      
-    }
+
+
   }
   
   public void paint(Graphics g) {
@@ -188,7 +180,7 @@ public class ChatWindowPanel extends JPanel{
   }
   
 
-  private static void rightPrint(String string) {
+  public static void rightPrint(String string) {
     
     try {
       SimpleAttributeSet right = new SimpleAttributeSet(); 
@@ -200,7 +192,7 @@ public class ChatWindowPanel extends JPanel{
     }
   }
   
-  private static void leftPrint(String string) {
+  public static void leftPrint(String string) {
     
     try {
       SimpleAttributeSet left = new SimpleAttributeSet(); 
