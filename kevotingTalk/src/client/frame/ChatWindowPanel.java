@@ -120,16 +120,17 @@ public class ChatWindowPanel extends JPanel{
     document = new DefaultStyledDocument(context);
     jtp = new JTextPane(document);
     jtp.setBackground(color);
+    jtp.setEditable(false);
     JScrollPane scroller2 = new JScrollPane(jtp);
     scroller2.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
     scroller2.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
     scroller2.setBounds(0, 80, 389,380);
     add(scroller2);
     
-    leftPrint("왜왜왜");
-    print("야야야");
-    leftPrint("제발");
-    print("되어라");
+//    leftPrint("왜왜왜");
+//    print("야야야");
+//    leftPrint("제발");
+//    print("되어라");
         
     sendButton = new JButton("전송");
     sendButton.setBackground(sendColor);
@@ -145,7 +146,7 @@ public class ChatWindowPanel extends JPanel{
         //displayText(textArea.getText());
         
         ClientSocket clientSocket = new ClientSocket();
-        clientSocket.send(textArea.getText());
+        clientSocket.send(UserDAO.username + " " + textArea.getText());
         
       }
       
@@ -162,13 +163,15 @@ public class ChatWindowPanel extends JPanel{
   
   public static void displayText2(String text) {
     if("송유진".equals(UserDAO.username)) {
-      textArea2.setFont(new Font("맑은 고딕", Font.BOLD, 18));
-      textArea2.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
-      textArea2.append(text+"\n");
+      rightPrint(text);
+//      textArea2.setFont(new Font("맑은 고딕", Font.BOLD, 18));
+//      textArea2.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
+//      textArea2.append(text+"\n");
     }else {
-      textArea2.setFont(new Font("맑은 고딕", Font.BOLD, 18));
-      //textArea2.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
-      textArea2.append(text+"\n");
+      leftPrint(text);
+//      textArea2.setFont(new Font("맑은 고딕", Font.BOLD, 18));
+//      //textArea2.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
+//      textArea2.append(text+"\n");
       
     }
   }
@@ -185,7 +188,7 @@ public class ChatWindowPanel extends JPanel{
   }
   
 
-  private static void leftPrint(String string) {
+  private static void rightPrint(String string) {
     
     try {
       SimpleAttributeSet right = new SimpleAttributeSet(); 
@@ -197,7 +200,7 @@ public class ChatWindowPanel extends JPanel{
     }
   }
   
-  private static void print(String string) {
+  private static void leftPrint(String string) {
     
     try {
       SimpleAttributeSet left = new SimpleAttributeSet(); 
