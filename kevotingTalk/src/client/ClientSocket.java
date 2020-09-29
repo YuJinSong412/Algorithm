@@ -14,6 +14,8 @@ public class ClientSocket {
   
   static Socket socket;
   
+  int count;
+  
   public void startClient() {
     
     Thread thread = new Thread() {
@@ -54,7 +56,6 @@ public class ClientSocket {
         String data = new String(byteArr, 0, readByteCount, "UTF-8");
         
         System.out.println("정답!! : "+data);
-        
         
         ChatWindowPanel.displayText(data);
   

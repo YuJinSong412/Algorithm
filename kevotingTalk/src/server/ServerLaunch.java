@@ -88,9 +88,14 @@ public class ServerLaunch {
   
    static class Client{
     Socket socket;
-    
+    OutputStream outputStream;
     public Client(Socket socket) {
       this.socket = socket;
+      try {
+        outputStream = socket.getOutputStream();
+      } catch (IOException e) {
+        e.printStackTrace();
+      }
       receive();
     }
     
@@ -112,21 +117,38 @@ public class ServerLaunch {
               System.out.println("요청처리: "+ socket.getRemoteSocketAddress());
               
               String data = new String(byteArr, 0, readByteCount, "UTF-8");
-              
-              for(Client client : connections) {
-                client.send(data);
-              }
+              print(data);
+//              for(Client client : connections) {
+//                client.send(data);
+//              }
               
             }
           }catch(Exception e) {
             
           }
         }
+
+        
         
       };
       executorService.submit(runnable);
     }
-    
+    private void print(String data) {
+
+      for(Client client : connections) {
+        //client.send(data);
+        System.out.println("fsdfsdfsdf"+client);
+        try {
+          client.outputStream.write(data.getBytes());
+          client.outputStream.flush();
+        } catch (IOException e) {
+          // TODO Auto-generated catch block
+          e.printStackTrace();
+        }
+      }
+    }
+
+
     public void send(String data) {
       Runnable runnable = new Runnable() {
 

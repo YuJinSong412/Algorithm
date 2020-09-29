@@ -77,7 +77,12 @@ public class FriendListPanel extends JPanel{
         ChatWindowFrame j = new ChatWindowFrame(c);
         
         ClientSocket clientSocket = new ClientSocket();
-        clientSocket.startClient();
+        
+        clientSocket.send(UserDAO.username+"=>"+UserDAO.username + "님이 입장하였습니다.");
+        
+       // ChatWindowPanel.rightPrint(UserDAO.username +"님이 입장하였습니다.");
+//        ClientSocket clientSocket = new ClientSocket();
+//        clientSocket.startClient();
       }
       
     });

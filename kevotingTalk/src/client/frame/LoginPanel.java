@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
-
+import client.ClientSocket;
 import server.userDB.User;
 import server.userDB.UserDAO;
 import util.CommonWord;
@@ -34,6 +34,9 @@ public class LoginPanel extends userInfoPanel{
       public void actionPerformed(ActionEvent e) {
         UserDAO user = new UserDAO();
         user.findUser(userInfos);
+        
+        ClientSocket clientSocket = new ClientSocket();
+        clientSocket.startClient();
       }
       
     });
@@ -60,6 +63,9 @@ public class LoginPanel extends userInfoPanel{
             public void actionPerformed(ActionEvent e) {
               UserDAO user = new UserDAO();
               user.findUser(userInfos);
+              
+              ClientSocket clientSocket = new ClientSocket();
+              clientSocket.startClient();
               
             }
             

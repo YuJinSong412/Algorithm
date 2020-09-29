@@ -52,7 +52,7 @@ public class ChatWindowPanel extends JPanel{
   
   static Style style;
 
-  static Style style2;
+ // static Style style2;
 
   static StyleContext context;
 
@@ -154,6 +154,9 @@ public class ChatWindowPanel extends JPanel{
     
   }
 
+  public static void ex(String data) {
+    
+  }
   
   public static void displayText(String data) {
     
@@ -184,6 +187,13 @@ public class ChatWindowPanel extends JPanel{
     
     try {
       SimpleAttributeSet right = new SimpleAttributeSet(); 
+      
+//      StyleContext context = new StyleContext();
+//      StyledDocument document = new DefaultStyledDocument(context);
+//      Style style = context.getStyle(StyleContext.DEFAULT_STYLE);
+//      StyleConstants.setFontSize(style, 18);
+//      StyleConstants.setForeground(style, Color.CYAN);
+//      
       StyleConstants.setAlignment(right, StyleConstants.ALIGN_RIGHT); 
       document.setParagraphAttributes(document.getLength(), document.getLength()+1, right, true);
       document.insertString(document.getLength(), string + "\n", right);
@@ -196,6 +206,13 @@ public class ChatWindowPanel extends JPanel{
     
     try {
       SimpleAttributeSet left = new SimpleAttributeSet(); 
+//      
+//      StyleContext context = new StyleContext();
+//      StyledDocument document = new DefaultStyledDocument(context);
+//      Style style = context.getStyle(StyleContext.DEFAULT_STYLE);
+//      StyleConstants.setFontSize(style, 18);
+//      StyleConstants.setForeground(style, Color.CYAN);
+//      
       StyleConstants.setAlignment(left, StyleConstants.ALIGN_LEFT); 
       document.setParagraphAttributes(document.getLength(), document.getLength()+1, left, true);
       document.insertString(document.getLength(), string + " \n", left);
