@@ -35,6 +35,7 @@ public class ServerLaunch {
       System.out.println("서버 연결 기다림");
       //-> serverSocket 생성 및 포트 바인딩
       
+      
     }catch(Exception e) {
       if(!serverSocket.isClosed()) {
         stopServer();
