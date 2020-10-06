@@ -75,22 +75,14 @@ public class ChatWindowPanel extends JPanel{
     scroller.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
     scroller.setBounds(0, 500, 321,65);
     add(scroller);
-    
-    
-    JButton imgButton = new JButton(new ImageIcon(img));
-    imgButton.setBackground(color);
-    Border emptyBorder = BorderFactory.createEmptyBorder();
-    imgButton.setBorder(emptyBorder);
-    imgButton.setFocusPainted(false);
-    imgButton.setBounds(0, 460, 60, 40);
-    add(imgButton);
+
     
     JButton imgButton2 = new JButton(new ImageIcon(img2));
     imgButton2.setBackground(color);
     Border emptyBorder2 = BorderFactory.createEmptyBorder();
     imgButton2.setBorder(emptyBorder2);
     imgButton2.setFocusPainted(false);
-    imgButton2.setBounds(60, 460, 60, 40);
+    imgButton2.setBounds(0, 460, 60, 40);
     
     
     add(imgButton2);
@@ -110,6 +102,7 @@ public class ChatWindowPanel extends JPanel{
         }
         
         String filePath = chooser.getSelectedFile().getAbsolutePath();
+        textArea.setText(filePath);
         
       }
       
@@ -126,11 +119,7 @@ public class ChatWindowPanel extends JPanel{
     scroller2.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
     scroller2.setBounds(0, 80, 389,380);
     add(scroller2);
-    
-//    leftPrint("왜왜왜");
-//    print("야야야");
-//    leftPrint("제발");
-//    print("되어라");
+
         
     sendButton = new JButton("전송");
     sendButton.setBackground(sendColor);

@@ -12,8 +12,6 @@ import java.util.Vector;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-import server.userDB.UserDAO;
-
 public class ServerLaunch {
 
   static ExecutorService executorService;
@@ -118,7 +116,7 @@ public class ServerLaunch {
               System.out.println("요청처리: "+ socket.getRemoteSocketAddress());
               
               String data = new String(byteArr, 0, readByteCount, "UTF-8");
-              print(data);
+              send(data);
 //              for(Client client : connections) {
 //                client.send(data);
 //              }
@@ -134,7 +132,7 @@ public class ServerLaunch {
       };
       executorService.submit(runnable);
     }
-    private void print(String data) {
+    private void send(String data) {
 
       for(Client client : connections) {
         //client.send(data);
@@ -143,33 +141,32 @@ public class ServerLaunch {
           client.outputStream.write(data.getBytes());
           client.outputStream.flush();
         } catch (IOException e) {
-          // TODO Auto-generated catch block
           e.printStackTrace();
         }
       }
     }
 
 
-    public void send(String data) {
-      Runnable runnable = new Runnable() {
-
-        @Override
-        public void run() {
-          try {
-            byte[] byteArr = data.getBytes("UTF-8");
-            OutputStream outputStream = socket.getOutputStream();
-            outputStream.write(byteArr);
-            outputStream.flush();
-            System.out.println("보내따");
-          }catch(IOException e) {
-            System.out.println("못보내따");
-          }
-          
-        }
-        
-      };
-      executorService.submit(runnable);
-    }
+//    public void send(String data) {
+//      Runnable runnable = new Runnable() {
+//
+//        @Override
+//        public void run() {
+//          try {
+//            byte[] byteArr = data.getBytes("UTF-8");
+//        //    OutputStream outputStream = socket.getOutputStream();
+//            outputStream.write(byteArr);
+//            outputStream.flush();
+//            System.out.println("보내따");
+//          }catch(IOException e) {
+//            System.out.println("못보내따");
+//          }
+//          
+//        }
+//        
+//      };
+//      executorService.submit(runnable);
+//    }
   }
 
 }
